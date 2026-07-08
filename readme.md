@@ -24,7 +24,7 @@ ollama run llava-diabetes
 Open a new terminal tab, navigate to the Go server folder, and run it:
 ```bash
 cd backend
-go run main.go
+go run .
 ```
 *It should start listening on `http://localhost:8080`.*
 
