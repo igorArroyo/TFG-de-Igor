@@ -14,7 +14,7 @@ Your local, AI-powered nutritional assistant for diabetes management. Fully priv
 To run this project locally, you'll need 3 terminal tabs open.
 
 **1. Spin up the AI (Ollama)**
-Make sure you have Ollama installed on your machine. Go to the `ollama` folder and build the custom assistant:
+Make sure you have Ollama installed on your machine. Go to the `ollama/multimodal` folder and build the custom assistant:
 ```bash
 ollama create llava-diabetes -f modelfile
 ollama run llava-diabetes
@@ -23,7 +23,7 @@ ollama run llava-diabetes
 **2. Start the Backend (Go)**
 Open a new terminal tab, navigate to the Go server folder, and run it:
 ```bash
-cd backend
+cd go
 go run .
 ```
 *It should start listening on `http://localhost:8080`.*
@@ -31,7 +31,7 @@ go run .
 **3. Launch the App (Expo)**
 Open a third terminal, navigate to the React Native folder, install the dependencies, and start the bundler:
 ```bash
-cd front-end
+cd React_native/front-end
 npm install
 npx expo start
 ```
