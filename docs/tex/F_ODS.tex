@@ -1,0 +1,30 @@
+\apendice{Anexo de sostenibilización curricular}
+
+\section{Introducción}
+El desarrollo del Trabajo de Fin de Grado no solo representa la culminación de la adquisición de competencias técnicas en el ámbito de la ingeniería de \textit{software}, sino que exige una reflexión profunda sobre el impacto que la tecnología generada ejerce sobre la sociedad y el entorno natural. Siguiendo las directrices de la CRUE para la introducción de la sostenibilidad en el currículum universitario \cite{crue2012}, el diseño, la programación y el despliegue del ecosistema SugAIr han integrado de forma transversal las cuatro competencias fundamentales de sostenibilidad. A lo largo de este anexo se detalla cómo el proyecto aborda la contextualización crítica de la salud, el uso eficiente y responsable de los recursos computacionales, la participación de la comunidad y la ineludible ética profesional en el manejo de datos médicos.
+
+\section{Contextualización crítica y problemática global (SOS1)}
+La primera competencia de sostenibilidad requiere establecer interrelaciones entre los problemas sociales, económicos y ambientales. SugAIr nace como respuesta tecnológica directa a una crisis sociosanitaria de carácter global: el incremento progresivo de la prevalencia de la diabetes y la falta de educación nutricional continua en la población \cite{idf2021}.
+
+Desde la dimensión social, la aplicación democratiza el acceso al conocimiento médico-nutricional. La capacidad del modelo base para analizar visualmente etiquetas de alimentos y resumir macronutrientes elimina barreras cognitivas y de comprensión lectora. De este modo, se empodera a los pacientes para que tomen decisiones informadas sobre su dieta diaria de forma autónoma, mitigando la dependencia exclusiva de las escasas visitas a los especialistas en endocrinología.
+
+En la vertiente económica, la autogestión eficaz de la ingesta de hidratos de carbono impacta de forma directa en la viabilidad de los sistemas de salud pública. La prevención de los picos glucémicos reduce drásticamente la incidencia de comorbilidades graves a largo plazo. Esta prevención se traduce en un menor gasto en ingresos hospitalarios, urgencias y farmacología. Además, la concepción del prototipo como una herramienta gratuita y de fácil acceso contribuye a reducir la brecha digital y económica.
+
+\section{Uso sostenible de recursos y eficiencia técnica (SOS2)}
+La segunda directriz se centra en la utilización sostenible de los recursos. En el campo del desarrollo de \textit{software}, la sostenibilidad ambiental se materializa a través de la eficiencia algorítmica y la reducción de la huella energética de la infraestructura computacional.
+
+El diseño arquitectónico de SugAIr se ha regido por la ligereza y el alto rendimiento. El uso del lenguaje Golang para la construcción del servidor intermedio garantiza un consumo ínfimo de memoria RAM y de ciclos de procesador, situándose como uno de los lenguajes compilados más eficientes energéticamente \cite{pereira2017energy}, lo que reduce el consumo eléctrico del equipo anfitrión. 
+
+De manera análoga, la decisión de utilizar el motor local Ollama para la Inteligencia Artificial supone una estrategia de descentralización sostenible. Al ejecutar las inferencias de forma local, se elimina la dependencia de macrocentros de datos masivos alojados en la nube, mitigando la huella de carbono asociada al entrenamiento y tráfico de red masivo de los grandes modelos de lenguaje \cite{strubell2019energy}. A nivel de cliente, la aplicación en React Native ejecuta rutinas de compresión de imágenes previas a la transmisión HTTP, minimizando el consumo de ancho de banda y alargando la vida útil de la batería del terminal.
+
+\section{Participación comunitaria y equidad (SOS3)}
+La tercera competencia persigue promover procesos que fomenten el desarrollo sostenible de la comunidad. SugAIr no es una simple base de datos consultiva, sino un agente educador activo diseñado para mejorar la alfabetización nutricional de la comunidad diabética, otorgando al usuario un rol proactivo.
+
+Para asegurar que este beneficio trascienda, el proyecto se asienta firmemente en la filosofía de código abierto (\textit{Open Source}). Todas las capas tecnológicas elegidas (Expo, Golang, Ollama y el modelo Llava) son de libre acceso. Esto asegura que la comunidad global de desarrolladores e investigadores puedan auditar, bifurcar y expandir el sistema sin restricciones por licencias privativas, garantizando la perdurabilidad del conocimiento.
+
+\section{Ética profesional y responsabilidad tecnológica (SOS4)}
+Por último, la competencia ética cobra una dimensión crítica al integrar modelos de Inteligencia Artificial en el ámbito sanitario. La implementación de SugAIr asume una responsabilidad profesional innegociable centrada en dos pilares: la protección de la información y la limitación clínica, alineándose con las directrices internacionales sobre la ética de la IA en la salud \cite{who2021ai}.
+
+Al basarse en modelos que pueden ser ejecutados en arquitecturas propias, se respeta la soberanía de los datos del paciente. Las fotografías y consultas privadas no son recopiladas ni comercializadas por corporaciones de terceros para el reentrenamiento indiscriminado de algoritmos, preservando así su derecho a la privacidad.
+
+Por otra parte, se ha actuado con rigor ético para evitar la negligencia algorítmica. Mediante un \textit{System Prompt} restrictivo, se ha limitado el radio de acción del asistente, obligándolo a declinar cualquier solicitud de diagnóstico o prescripción de fármacos. La herramienta se define éticamente como un apoyo dietético no vinculante, protegiendo al usuario de las alucinaciones inherentes a la IA generativa y garantizando que la tecnología actúe como un complemento seguro y nunca sustituya el criterio clínico humano.

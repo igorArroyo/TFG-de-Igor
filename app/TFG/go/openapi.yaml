@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: TFG Backend API
+  description: API generada automáticamente
+  version: 1.0.0
+
+paths:
+  /api/v1/healthcheck:
+    get:
+      summary: Comprueba el estado del servidor
+      operationId: getHealthcheck
+      responses:
+        '200':
+          description: El servidor está vivo. No incluye body.
+
+  /api/v1/chat:
+    post:
+      summary: Enviar mensaje al chat
+      operationId: postChat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Respuesta del modelo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

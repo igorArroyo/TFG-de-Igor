@@ -1,0 +1,24 @@
+\capitulo{2}{Objetivos del proyecto}
+El objetivo principal de SugAIr es desarrollar una aplicación que sirva como núcleo central para ofrecer al paciente todo el conocimiento y las herramientas necesarias para controlar su diabetes de forma satisfactoria. A continuación, se detallan los subobjetivos que han guiado el desarrollo del proyecto, estructurados en dos niveles fundamentales:
+
+\section{Objetivos generales}
+
+Los propósitos principales que definen el alcance y el valor que la herramienta aportará al usuario final son los siguientes:
+
+\begin{enumerate}
+    \item \textbf{Centralizar la gestión de la enfermedad:} Aunar en una única plataforma las funciones de educación, predicción y seguimiento de la diabetes mediante el uso de Inteligencia Artificial.
+    \item \textbf{Desarrollar un agente especializado:} Proveer un asistente conversacional capaz de contestar preguntas única y exclusivamente sobre diabetes, actuando como un educador diabetológico virtual.
+    \item \textbf{Integrar análisis de contexto visual:} Permitir el envío y procesamiento de imágenes (por ejemplo, etiquetas de alimentos) para extraer su valor nutricional, calcular raciones de hidratos de carbono y determinar su velocidad de absorción.
+    \item \textbf{Garantizar la privacidad del usuario:} Procesar las interacciones y los datos médicos de forma local, evitando la exposición de información de salud en servidores de terceros.
+\end{enumerate}
+
+\section{Objetivos técnicos}
+
+Para alcanzar las metas funcionales establecidas, se han definido los siguientes objetivos a nivel de arquitectura e implementación tecnológica:
+
+\begin{enumerate}
+    \item \textbf{Implementar una arquitectura cliente-servidor desacoplada:} Desarrollar un frontend dinámico mediante React (utilizando el entorno Expo) que consuma una API REST construida con el lenguaje Go.
+    \item \textbf{Integrar un motor de Inteligencia Artificial local:} Emplear Ollama como entorno de ejecución para desplegar Modelos de Lenguaje Grande (LLM) con capacidades multimodales (procesamiento de texto e imagen) en el propio hardware del servidor.
+    \item \textbf{Construir una interfaz de usuario reactiva:} Diseñar una aplicación web inspirada en plataformas de mensajería (chat), priorizando la fluidez y la experiencia de uso en la interacción en tiempo real.
+    \item \textbf{Aplicar metodologías ágiles:} Gestionar el ciclo de vida del desarrollo mediante sprints de tres semanas apoyadas en un tablero Kanban.
+\end{enumerate}

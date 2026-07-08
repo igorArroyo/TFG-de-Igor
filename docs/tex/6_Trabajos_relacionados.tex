@@ -1,0 +1,42 @@
+\capitulo{6}{Trabajos relacionados}
+
+En el ecosistema del software orientado a la salud digital y, más específicamente, al manejo de la diabetes, se observan dos líneas de desarrollo predominantes: por un lado, las aplicaciones móviles de registro y seguimiento de datos médicos; y por otro, los asistentes virtuales de salud basados en Inteligencia Artificial. Con el objetivo de situar este proyecto en el panorama tecnológico actual, a continuación se describen tres plataformas representativas del sector y se analizan sus características frente a SugAIr.
+
+\section{mySugr}
+La plataforma mySugr \cite{mysugr} es una de las aplicaciones de gestión de la diabetes más populares a nivel global. Su funcionalidad principal reside en actuar como un cuaderno de bitácora digital (\textit{logbook}) donde los usuarios pueden registrar sus niveles de glucosa, ingesta de carbohidratos y dosis de insulina. Destaca por su enfoque en la gamificación para motivar al paciente y por su capacidad para integrarse por Bluetooth con diversos glucómetros del mercado.
+
+Si bien mySugr es una herramienta robusta para el seguimiento de métricas y la estimación de la hemoglobina glicosilada (HbA1c), carece de un motor de Inteligencia Artificial generativa que permita al usuario interactuar mediante lenguaje natural para resolver dudas complejas de educación diabetológica en tiempo real.
+
+\section{S.A.R.A.H. (Organización Mundial de la Salud)}
+S.A.R.A.H. (Smart AI Resource Assistant for Health) \cite{sarah_who} es un promotor de salud digital impulsado por Inteligencia Artificial generativa y desarrollado por la Organización Mundial de la Salud (OMS). Este agente conversacional está diseñado para interactuar con los usuarios y proporcionar información sobre diversos temas de salud, incluyendo hábitos de vida saludables y prevención de enfermedades crónicas.
+
+Aunque comparte con SugAIr el concepto de asistente conversacional para la educación en salud, S.A.R.A.H. es un sistema de propósito general alojado en servidores externos (en la nube). Esto implica que las interacciones de voz y texto se procesan fuera del entorno del usuario, un enfoque que difiere de la arquitectura de privacidad estricta y ejecución local planteada en este proyecto.
+
+\section{SocialDiabetes}
+SocialDiabetes \cite{socialdiabetes} es una plataforma integral de origen español, certificada como producto sanitario (\textit{Medical Device}), orientada al control de la diabetes tipo 1 y tipo 2. Permite el cálculo de dosis de insulina, la monitorización de pautas alimentarias y la conexión remota entre el paciente y el profesional sanitario a través de un panel de control en la nube.
+
+A diferencia de SugAIr, el enfoque de SocialDiabetes es puramente clínico y de monitorización algorítmica. No integra modelos de lenguaje grande (LLM) que permitan mantener una conversación abierta y dinámica con el paciente para ofrecer consejos proactivos o explicar conceptos teóricos de forma personalizada.
+
+\section{Comparativa sobre las funcionalidades cubiertas}
+
+Para clarificar el valor añadido de SugAIr frente a las soluciones existentes, se presenta una tabla comparativa que evalúa las funcionalidades clave de cada sistema. El objetivo de SugAIr no es sustituir a los dispositivos médicos certificados, sino complementar el ecosistema ofreciendo un entorno privado de consulta interactiva.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparativa de características entre aplicaciones orientadas a la salud}
+\vspace{0.2cm}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Funcionalidad} & \textbf{mySugr} & \textbf{S.A.R.A.H.} & \textbf{SocialDiabetes} & \textbf{SugAIr} \\ \hline
+Registro de glucosa y datos & Sí & No & Sí & No \\ \hline
+IA Conversacional generativa & No & Sí & No & Sí \\ \hline
+Educación diabetológica & Parcial & Sí & Parcial & Sí \\ \hline
+Ejecución local (Privacidad) & No & No & No & Sí \\ \hline
+Cálculo de insulina algorítmico& Sí & No & Sí & No \\ \hline
+\end{tabular}
+\label{tab:comparativa_apps}
+\end{table}
+
+Como se puede observar en la Tabla \ref{tab:comparativa_apps}, el valor diferencial de SugAIr radica en la combinación de un agente conversacional especializado exclusivamente en diabetes con una arquitectura de ejecución local. Mientras que las aplicaciones tradicionales se centran en el registro de datos, y los asistentes globales operan en la nube, SugAIr se posiciona como una herramienta educativa privada, sentando las bases para futuras integraciones multimodales sin comprometer los datos médicos del paciente.
+
+%Este apartado sería parecido a un estado del arte de una tesis o tesina. En un trabajo final grado no parece obligada su presencia, aunque se puede dejar a juicio del tutor el incluir un pequeño resumen comentado de los trabajos y proyectos ya realizados en el campo del proyecto en curso. 

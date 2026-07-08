@@ -1,0 +1,93 @@
+\apendice{Documentación técnica de programación}
+
+El presente apéndice constituye la guía técnica oficial para el mantenimiento, despliegue y evaluación empírica del código fuente del sistema SugAIr, sirviendo como marco de referencia para futuros desarrolladores o auditores del proyecto.
+
+\section{Introducción}
+La documentación técnica es un pilar fundamental en la ingeniería del \textit{software} para garantizar la transferibilidad y sostenibilidad de un sistema. En esta sección se abordan los aspectos prácticos de la construcción de SugAIr, organizando de manera exhaustiva la disposición física de los ficheros en el entorno de desarrollo, las pautas operativas para futuros programadores, el procedimiento exacto de despliegue local y las métricas obtenidas tras la ejecución de las pruebas automatizadas del servidor.
+
+\section{Estructura de directorios}
+Para facilitar la comprensión global de la plataforma, el repositorio de SugAIr se ha estructurado dividiendo limpiamente los módulos lógicos correspondientes al servidor en Go, la interfaz móvil en React Native y la parametrización de la Inteligencia Artificial. A continuación, se desglosa la jerarquía de directorios definitiva del entorno de desarrollo:
+
+\begin{itemize}
+    \item \texttt{/go/} \textbf{(Capa de lógica y enrutamiento - Backend)}
+    \begin{itemize}
+        \item \texttt{main.go}: Punto de entrada del backend que inicializa el \textit{framework} Echo y gestiona las peticiones de red.
+        \item \texttt{openapi.yaml}: Contrato de diseño de la interfaz API REST siguiendo el estándar internacional OpenAPI 3.0.
+        \item \texttt{api.gen.go}: Código del servidor generado automáticamente para asegurar la coherencia estricta con el contrato de la API.
+        \item \texttt{main\_test.go}: Batería de pruebas automatizadas unitarias y de integración para los controladores del servidor.
+        \item \texttt{go.mod} y \texttt{go.sum}: Ficheros destinados al control, registro y bloqueo de versiones de las dependencias de Go.
+    \end{itemize}
+    
+    \item \texttt{/ollama/multimodal/} \textbf{(Configuración del motor de inferencia)}
+    \begin{itemize}
+        \item \texttt{modelfile}: Fichero instructivo de Ollama que especifica el uso del modelo base Llava y las directrices del \textit{System Prompt}.
+    \end{itemize}
+    
+    \item \texttt{/React\_native/front-end/} \textbf{(Capa de presentación móvil - Frontend)}
+    \begin{itemize}
+        \item \texttt{app/}: Núcleo conversacional bajo el sistema \textit{Expo Router} que contiene las vistas de navegación (\texttt{(tabs)/}), la lógica principal del chat (\texttt{index.tsx}) y la configuración estructural (\texttt{\_layout.tsx}).
+        \item \texttt{components/} y \texttt{hooks/}: Directorios destinados a la modularización de elementos visuales aislados de React y lógica asíncrona reutilizable.
+        \item \texttt{assets/}: Almacén de recursos gráficos, imágenes y elementos estáticos de marca de la aplicación móvil.
+        \item \texttt{package.json}: Declaración de dependencias del entorno Node.js y configuración de los \textit{scripts} de ejecución de Expo.
+    \end{itemize}
+\end{itemize}
+
+\section{Manual del programador}
+La extensión funcional o modificación del ecosistema SugAIr requiere que cualquier intervención futura respete escrupulosamente los patrones de diseño aplicados durante su concepción. El desarrollo de nuevas características debe regirse por los siguientes principios técnicos de mantenimiento:
+
+\begin{enumerate}
+    \item \textbf{Gestión de flujos en la capa móvil:} Toda integración visual en la aplicación React Native debe implementarse dentro del directorio \texttt{app/}. Al utilizar enrutamiento basado en archivos (\textit{Expo Router}), la creación de nuevas pantallas requiere únicamente añadir un fichero con extensión \texttt{.tsx}. Es mandatorio encapsular las consultas HTTP asíncronas haciendo uso de estados reactivos para gobernar correctamente el bloqueo de botones y los componentes de carga activa (\texttt{ActivityIndicator}).
+    \item \textbf{Ciclo de modificación de la API de enrutamiento:} Para alterar o ampliar la comunicación del backend, se prohíbe explícitamente modificar de forma directa el fichero \texttt{api.gen.go}. El flujo de trabajo correcto es actualizar primero el diseño contractual en \texttt{openapi.yaml}, ejecutar la herramienta de generación automatizada para actualizar los tipos de datos en Go y, finalmente, implementar la lógica operativa dentro de los controladores de \texttt{main.go}.
+    \item \textbf{Alteración heurística del asistente algorítmico:} Los cambios asociados a la especialización del educador diabetológico virtual no se gestionan mediante código tradicional. Cualquier restricción temática o cambio en el formato de salida debe realizarse modificando la directiva \texttt{SYSTEM} en el fichero \texttt{modelfile} de la carpeta multimodal, requiriendo su posterior ensamblado en el motor Ollama.
+\end{enumerate}
+
+\section{Compilación, instalación y ejecución del proyecto}
+El despliegue local de la plataforma en un entorno de desarrollo requiere que la máquina anfitriona disponga de los entornos de ejecución de Golang, Node.js y el servicio Ollama previamente instalados. El ciclo completo para inicializar los tres componentes esenciales de la arquitectura se compone de los siguientes procedimientos secuenciales:
+
+\subsection*{1. Construcción del modelo de inferencia}
+Antes de arrancar los servicios lógicos, es indispensable disponer del entorno de ejecución y construir el modelo especializado. En primer lugar, se debe descargar e instalar el motor de Inteligencia Artificial en el equipo anfitrión desde su sitio web oficial (\texttt{https://ollama.com/}). 
+
+Una vez instalado, es necesario descargar el modelo base multimodal sobre el cual se asienta el sistema. Desde la consola de comandos, se ejecuta la siguiente instrucción:
+\begin{verbatim}
+ollama pull llava
+\end{verbatim}
+
+A continuación, se navega hasta el directorio que contiene la configuración del proyecto y se compila el modelo personalizado (que incluye el \textit{System Prompt} médico) ejecutando las siguientes instrucciones:
+\begin{verbatim}
+cd ollama/multimodal
+ollama create llava-diabetes -f modelfile
+\end{verbatim}
+
+\subsection*{2. Inicialización del servidor backend}
+Una vez disponible el modelo en la memoria local, se abre una nueva ventana en la terminal y se arranca el puente de enrutamiento en Go:
+\begin{verbatim}
+cd go
+go mod tidy
+go run .
+\end{verbatim}
+El servidor confirmará su activación mostrando en consola que se encuentra a la escucha de peticiones en el puerto \texttt{8080}.
+
+\subsection*{3. Lanzamiento de la aplicación móvil cliente}
+Finalmente, se procede a compilar el cliente móvil interactivo mediante el gestor de paquetes y el empaquetador de Expo:
+\begin{verbatim}
+cd React_native/front-end
+npm install
+npx expo start
+\end{verbatim}
+La terminal desplegará un código QR dinámico. El desarrollador podrá escanear dicho código a través de la herramienta móvil \textit{Expo Go} para sincronizar y ejecutar la aplicación en tiempo real en un terminal físico.
+También le puede dar a la tecla w para verlo en versión web.
+
+\section{Pruebas del sistema}
+Para validar la fiabilidad y resiliencia del \textit{software} construido, se ha adoptado una estrategia de pruebas combinada, integrando análisis automatizados en el backend y verificaciones de rendimiento e interfaz en el entorno cliente.
+
+\subsection*{Métricas de cobertura automatizada (Backend)}
+Haciendo uso de las herramientas de inspección del compilador de Go, se ha diseñado una batería de pruebas unitarias y de integración en el fichero \texttt{main\_test.go}. Estas pruebas evalúan de forma controlada el comportamiento de la API frente a escenarios críticos, tales como la validación del estado del sistema (\textit{healthcheck}) o la inyección deliberada de cargas JSON corruptas.
+
+Mediante el uso de servidores web simulados en memoria (\texttt{httptest.NewServer}), se ha logrado aislar la lógica del servidor sin depender del estado externo del motor Ollama. Al ejecutar las pruebas a través de la instrucción oficial \texttt{go test -v -cover}, el sistema arroja una métrica de cobertura del 47,9\,\% de las sentencias globales. 
+
+Este porcentaje representa una cobertura robusta de los flujos principales de ejecución (\textit{Happy Paths}) y de los mecanismos de validación de entrada (\textit{Bad Request}). La cobertura restante corresponde de forma deliberada al bloque de inicialización y bloqueo de la función \texttt{main()}, así como a las ramificaciones secundarias de captura de excepciones de red interna (tiempos de espera agotados o caídas del motor IA), cuya verificación requeriría técnicas de inyección de fallos más complejas que escapan al alcance de estas pruebas unitarias.
+
+\subsection*{Validación de rendimiento conversacional e interfaz}
+De manera complementaria a los tests automatizados, se realizaron pruebas manuales en el entorno móvil para medir la robustez de la interfaz frente a escenarios de error, tales como cortes de conexión (servidor backend desconectado) y denegación de permisos del sistema operativo para acceder a la galería fotográfica. 
+
+Asimismo, se explotaron empíricamente los resultados de rendimiento del sistema. Estas pruebas de carga demostraron la viabilidad computacional de la inferencia local multimodal, confirmando que la compresión previa aplicada a las imágenes desde React Native disminuye sustancialmente el peso del \textit{payload}, permitiendo que los tiempos de procesamiento de Ollama se mantengan estables y dentro de un rango aceptable para una interacción conversacional.

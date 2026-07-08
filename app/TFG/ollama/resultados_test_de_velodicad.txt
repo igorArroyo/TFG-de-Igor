@@ -1,0 +1,21 @@
+>>> ¿Qué es la diabetes tipo 2 y cuáles son sus principales causas?
+La diabetes tipo 2 es una enfermedad en la que tu cuerpo no puede manejar el azúcar (glucosa) correctamente. Esto se debe a que tus células corporales pierden su sensibilidad a la insulina, un hormón
+producido por el páncreas.
+
+Las principales causas de la diabetes tipo 2 son:
+
+- Sobrepeso o obesidad
+- Edad avanzada
+- Actividad física reducida
+- Alimentación poco saludable
+
+Recuerda que siempre debes consultar a tu médico para obtener un diagnóstico y tratamiento adecuados. ¿Quieres saber más sobre cómo manejarla?
+
+total duration:       9.0127325s
+load duration:        4.9632237s
+prompt eval count:    213 token(s)
+prompt eval duration: 938.0625ms
+prompt eval rate:     227.06 tokens/s
+eval count:           141 token(s)
+eval duration:        2.9420788s
+eval rate:            47.93 tokens/s

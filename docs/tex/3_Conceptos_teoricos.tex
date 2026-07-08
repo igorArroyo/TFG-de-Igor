@@ -1,0 +1,68 @@
+\capitulo{3}{Conceptos teóricos}
+
+En este capítulo se exponen los fundamentos médicos y biológicos necesarios para comprender la naturaleza de la diabetes mellitus y su tratamiento diario. El conocimiento riguroso de la fisiología celular, los tipos de diabetes, los riesgos asociados a las alteraciones glucémicas y las pautas de insulinización resulta imprescindible para justificar las funcionalidades predictivas y educativas implementadas en el asistente conversacional SugAIr.
+
+\section{Fisiología celular básica: la glucosa y la energía}
+El cuerpo humano está compuesto por billones de células, que son las unidades anatómicas y funcionales fundamentales de los seres vivos. Para que una célula pueda realizar sus funciones (como la contracción muscular o la transmisión de impulsos nerviosos), necesita energía. Esta energía se obtiene principalmente a través de un proceso químico que transforma los alimentos en una molécula llamada ATP (Trifosfato de Adenosina), que actúa como la moneda energética del organismo \cite{medline_celula}.
+
+El principal combustible que utilizan las células para fabricar este ATP es la glucosa. La glucosa es un monosacárido, es decir, la forma más simple de los hidratos de carbono (azúcares y almidones presentes en los alimentos). Tras la digestión, estos hidratos de carbono se descomponen y la glucosa pasa al torrente sanguíneo. El índice de glucosa en sangre representa, por tanto, el nivel de azúcar circulante. Este combustible es especialmente crítico para el cerebro, el cual necesita azúcar de forma constante para funcionar adecuadamente \cite{guyton2021}.
+
+\section{¿Qué es la diabetes?}
+La diabetes mellitus (DM) comprende un grupo de trastornos metabólicos crónicos cuya característica fisiopatológica principal común es la hiperglucemia (niveles crónicamente elevados de glucosa en el plasma sanguíneo). Esta condición patológica se deriva de alteraciones en la secreción de insulina, en la acción biológica de dicha hormona a nivel tisular, o en una combinación de ambas.
+
+La insulina es una hormona anabólica secretada por las células beta pancreáticas (ubicadas en los islotes de Langerhans), cuya función primordial es facilitar la captación celular de la glucosa circulante para su metabolismo o almacenamiento. La desregulación de este mecanismo provoca que la glucosa no pueda penetrar eficazmente en las células, acumulándose en el torrente sanguíneo. A largo plazo, esta hiperglucemia sostenida genera disfunción y daño orgánico, afectando especialmente al sistema vascular, los riñones, la retina y el sistema nervioso periférico \cite{revespcardiol_diabetes}.
+
+\section{Síntomas de la diabetes}
+La sintomatología clínica clásica de la diabetes mellitus está directamente fundamentada en las alteraciones producidas por la hiperglucemia severa. Los síntomas cardinales, frecuentemente denominados en la literatura clínica como la ``regla de las 4 P'', incluyen los siguientes \cite{who_diabetes, nutriwhite_4p}:
+
+\begin{itemize}
+    \item \textbf{Poliuria}: Excreción excesiva de orina. Ocurre cuando la concentración de glucosa sérica supera el umbral renal de reabsorción. El exceso de glucosa se excreta en la orina, arrastrando consigo agua por ósmosis, lo que provoca una diuresis osmótica.
+    \item \textbf{Polidipsia}: Sed excesiva. Consiste en un mecanismo fisiológico compensatorio; la pérdida masiva de líquidos a través de la poliuria genera una deshidratación que activa los osmorreceptores hipotalámicos, induciendo la sensación de sed.
+    \item \textbf{Polifagia}: Aumento desmesurado del apetito. A pesar de la abundancia de glucosa en sangre, el déficit de insulina impide que esta penetre en las células, generando un estado de inanición celular que el cerebro interpreta como falta de alimento.
+    \item \textbf{Pérdida de peso inexplicable}: Debido a la incapacidad de utilizar la glucosa como sustrato energético principal, el organismo recurre a vías metabólicas alternativas, desencadenando el catabolismo de triglicéridos en el tejido adiposo y de proteínas en el músculo esquelético.
+\end{itemize}
+
+\section{Tipos de diabetes}
+La etiología de la diabetes mellitus es heterogénea. La clasificación contemporánea se basa fundamentalmente en la patogenia y el origen del trastorno, categorizándose en cuatro grandes grupos principales \cite{who_diabetes}:
+
+\begin{enumerate}
+    \item \textbf{Diabetes Tipo 1}: Mediada por la destrucción de las células beta.
+    \item \textbf{Diabetes Tipo 2}: Caracterizada por la resistencia a la insulina y el déficit progresivo de su secreción.
+    \item \textbf{Diabetes Mellitus Gestacional (DMG)}: Hiperglucemia diagnosticada por primera vez durante el embarazo.
+    \item \textbf{Tipos específicos por otras causas}: Síndromes genéticos, patologías del páncreas exocrino o diabetes inducida por fármacos.
+\end{enumerate}
+
+\subsection{Diabetes Tipo 1}
+La diabetes mellitus tipo 1 representa una minoría de los casos globales. Su rasgo patogénico definitorio es la destrucción progresiva e irreversible de las células beta del páncreas, lo que conduce a un déficit absoluto en la secreción de insulina \cite{revespcardiol_diabetes}. 
+
+Los pacientes con este diagnóstico son insulinodependientes de forma absoluta a lo largo del día \cite{ada_standards}. En las primeras fases de la enfermedad, es necesario tener en cuenta las denominadas fases de luna de miel, en las que el páncreas conserva capacidad residual para generar insulina de forma natural, lo que puede provocar episodios de hipoglucemia a consecuencia de la inyección superpuesta de insulina artificial \cite{cinfasalud_diabetes}.
+
+\subsection{Diabetes Tipo 2}
+La diabetes mellitus tipo 2 es la variante clínica más prevalente. Su patogenia es compleja y de naturaleza bifásica, caracterizándose por la coexistencia de resistencia a la insulina y una disfunción progresiva de las células beta pancreáticas. 
+
+La resistencia a la insulina implica una respuesta biológica subóptima a esta hormona. En las etapas precoces, el páncreas logra compensar esta resistencia secretando cantidades supranormales de insulina. Sin embargo, con el transcurso del tiempo, las células beta sufren estrés oxidativo, claudican y se vuelven incapaces de mantener esta hipersecreción, instaurándose un déficit relativo de insulina. A lo largo del día, una misma persona puede ofrecer diferentes niveles de resistencia a la insulina, lo que significa que la cantidad de unidades necesarias para metabolizar una misma ingesta de hidratos de carbono puede variar en función de la hora, siendo un patrón que suele mantenerse constante en el propio paciente \cite{doctorsolano_hiperinsulinemia}.
+
+\section{Control glucémico y complicaciones agudas}
+En el control diario de la enfermedad, se establece que un nivel aceptable de azúcar en sangre se encuentra dentro del rango de 70 a 120 mg/dl \cite{ada_standards, idf_atlas_diabetes}. Las desviaciones fuera de estos parámetros conllevan riesgos graves para la salud:
+
+\begin{itemize}
+    \item \textbf{Hipoglucemia}: Se produce cuando los niveles descienden por debajo de 70 mg/dl \cite{idf_atlas_diabetes}. Ante la falta de azúcar, indispensable para el funcionamiento cerebral, se puede producir una pérdida de conocimiento que impide la ingesta de azúcares de absorción rápida, pudiendo derivar en un coma diabético \cite{ada_standards}.
+    \item \textbf{Hiperglucemia}: Ocurre cuando los niveles superan los 120 mg/dl \cite{idf_atlas_diabetes}. Sin el tratamiento insulínico correcto, el cuerpo recurre a la obtención de energía a partir de la grasa corporal, un proceso que genera cuerpos cetónicos \cite{ada_standards}. Estos compuestos orgánicos son tóxicos en altas cantidades y pueden provocar cetoacidosis, una complicación severa que, ante la carencia de insulina, requiere el ingreso inmediato en la UCI por complicaciones cardíacas o cerebrales \cite{revespcardiol_diabetes}.
+\end{itemize}
+
+\section{Nutrición y pautas de insulinización}
+La variación del azúcar en sangre depende directamente de la actividad física y de la alimentación \cite{who_diabetes}. La ingesta de hidratos de carbono se clasifica en tres tipos según su índice de absorción:
+
+\begin{itemize}
+    \item \textbf{De absorción lenta}: Cereales, harinas, pastas, legumbres y arroces \cite{cinfasalud_diabetes}.
+    \item \textbf{De absorción rápida}: Azúcar refinado, zumos y miel \cite{cinfasalud_diabetes}.
+    \item \textbf{De absorción semirrápida}: Frutas \cite{cinfasalud_diabetes}.
+\end{itemize}
+
+Para metabolizar estas ingestas y mantener un índice glucémico estable, el paciente insulinodependiente recurre a distintos tipos de insulina artificial \cite{ada_standards}. Las terapias actuales utilizan principalmente tres variantes:
+
+\begin{enumerate}
+    \item \textbf{Insulina lenta o basal}: Tiene una duración aproximada de 24 horas y se aplica, por norma general, una vez al día para controlar el azúcar en sangre durante el sueño, en ayunas y entre comidas \cite{ada_standards}.
+    \item \textbf{Insulina rápida}: Comienza a hacer efecto entre los 5 y 15 minutos de su aplicación, alcanzando su pico máximo entre 1 y 2 horas \cite{ada_standards}. Se administra al menos tres veces al día, justo antes de las comidas principales o para corregir picos de azúcar descontrolados \cite{ada_standards}.
+    \item \textbf{Insulina de acción intermedia}: Comienza a hacer efecto entre 1 y 2 horas tras su inyección, con un pico máximo a partir de la cuarta a sexta hora, requiriendo un mayor número de aplicaciones diarias que la insulina basal \cite{ada_standards}.
+\end{enumerate}

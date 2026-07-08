@@ -1,0 +1,55 @@
+\capitulo{4}{Técnicas y herramientas}
+
+Este capítulo presenta las técnicas metodológicas y las herramientas de desarrollo empleadas para la implementación de SugAIr. Siguiendo las directrices del proyecto, se enumeran las tecnologías de uso común empleadas en la arquitectura base y se detallan con mayor profundidad aquellas soluciones novedosas, como la ejecución local de modelos de Inteligencia Artificial, justificando en cada caso la elección realizada frente a otras alternativas.
+
+\section{Desarrollo del frontend: React Native}
+React Native es un framework de código abierto publicado por Meta que permite el desarrollo de aplicaciones móviles utilizando la biblioteca React y el lenguaje JavaScript, compartiendo una única base de código \cite{react_native_dev}. A diferencia de otras soluciones híbridas que emplean vistas web (WebViews), esta tecnología renderiza componentes nativos, ofreciendo un rendimiento superior a nivel de interfaz.
+
+Su arquitectura interna se basa en los siguientes componentes principales \cite{react_native_dev}:
+\begin{itemize}
+    \item \textbf{Código nativo y JavaScriptCore VM}: Combina módulos nativos de la plataforma con una máquina virtual subyacente que interpreta el código JavaScript en tiempo real.
+    \item \textbf{React Native Bridge}: Actúa como puente de comunicación asíncrona entre el hilo de JavaScript y las APIs nativas del dispositivo.
+    \item \textbf{Virtual DOM}: Consiste en una representación abstracta de la interfaz de usuario. El sistema calcula las diferencias tras cada cambio de estado y actualiza únicamente los elementos necesarios, optimizando los recursos del sistema.
+\end{itemize}
+
+\section{Desarrollo del backend: Go (Golang)}
+Para la construcción del servidor y la lógica de negocio se ha optado por Go (Golang), un lenguaje de programación compilado, concurrente y de código abierto desarrollado originalmente por Google \cite{donovan_go}. Su elección frente a otros lenguajes se justifica por su alta velocidad de ejecución y su excepcional manejo de la concurrencia a través de \textit{goroutines}.
+
+Las principales ventajas que justifican la adopción de Go en este proyecto incluyen las siguientes \cite{donovan_go}:
+\begin{itemize}
+    \item \textbf{Concurrencia nativa}: Facilita el desarrollo de servicios web altamente escalables permitiendo la ejecución de múltiples tareas en paralelo con un bajo consumo de memoria.
+    \item \textbf{Eficiencia y rendimiento}: Al ser un lenguaje compilado directamente a código máquina, optimiza la velocidad de respuesta, característica crítica para intermediar entre el cliente y el motor de inteligencia artificial.
+    \item \textbf{Sintaxis limpia y mantenibilidad}: Su diseño coherente y estricto reduce los riesgos de errores y facilita el mantenimiento a largo plazo.
+    \item \textbf{Gestión de memoria}: Incorpora un recolector de basura (\textit{garbage collector}) altamente optimizado que previene fugas de memoria durante ejecuciones continuadas.
+\end{itemize}
+
+\section{Inteligencia Artificial y Modelos de Lenguaje (LLM)}
+La Inteligencia Artificial (IA) generativa constituye el núcleo funcional de SugAIr, superando el enfoque de los sistemas de software tradicionales para ofrecer capacidades de razonamiento y procesamiento de lenguaje natural \cite{iso_ia}. Dada la naturaleza del proyecto, se requiere la combinación de Reconocimiento Óptico de Caracteres (OCR) con IA multimodal para extraer y estructurar datos provenientes de imágenes de manera automatizada.
+
+Para garantizar la privacidad absoluta de los datos médicos del usuario, se ha descartado el uso de APIs de terceros en la nube, optando por la ejecución local de Modelos de Lenguaje Grande (LLM). Para este fin se emplea la herramienta Ollama \cite{ollama_official}.
+
+Ollama es un entorno de ejecución de código abierto que presenta características fundamentales para el proyecto \cite{ollama_official, osl_ollama}:
+\begin{itemize}
+    \item \textbf{Privacidad y seguridad}: Permite descargar y ejecutar modelos directamente en el hardware local, garantizando que ninguna información sensible del paciente abandone su equipo.
+    \item \textbf{Accesibilidad}: Simplifica el complejo proceso de configuración y despliegue de modelos de IA, encapsulando las dependencias técnicas.
+    \item \textbf{Flexibilidad multimodal}: Permite la integración fluida de modelos capaces de procesar tanto texto como imágenes, cubriendo los requerimientos específicos de la aplicación.
+\end{itemize}
+
+\section{Arquitectura API REST}
+La comunicación entre la aplicación cliente y el servidor se realiza mediante una arquitectura basada en el estilo arquitectónico API REST, introducido formalmente por Roy Fielding \cite{fielding_rest}. Este estándar de desarrollo garantiza la interoperabilidad, la escalabilidad y la separación de responsabilidades.
+
+La implementación de esta arquitectura en el proyecto se fundamenta en los siguientes principios:
+\begin{itemize}
+    \item \textbf{Independencia Cliente-Servidor}: El frontend y el backend pueden evolucionar y escalar de forma totalmente independiente.
+    \item \textbf{Sistema por capas y modularidad}: Permite que las peticiones fluyan a través de diferentes intermediarios (como el servidor en Go y el motor de inferencia Ollama) de forma transparente para el usuario final.
+    \item \textbf{Endpoints y métodos HTTP}: Se definen rutas específicas gobernadas por verbos estándar (GET, POST, PUT, DELETE) para el intercambio de información.
+\end{itemize}
+
+\section{Gestión del proyecto: GitLab y Control de Versiones}
+Para la administración del ciclo de vida del desarrollo se ha utilizado la plataforma GitLab, unificando la planificación de tareas y la custodia del código fuente bajo el paradigma de entrega ágil \cite{gitlab_agile}.
+
+La metodología de trabajo se apoya en las siguientes herramientas integradas:
+\begin{itemize}
+    \item \textbf{Tableros Kanban}: Proporcionan una visualización clara del flujo de trabajo, dividiendo las iteraciones en tareas (\textit{issues}) que transitan por distintos estados (pendientes, en proceso, finalizadas), facilitando el control continuo y limitando el trabajo en curso \cite{anderson_kanban, gitlab_kanban}.
+    \item \textbf{Control de versiones (Git)}: Garantiza la trazabilidad absoluta del código. Cada modificación queda registrada con su autor y fecha, permitiendo la creación de ramas aisladas para nuevas funciones y posibilitando la reversión a versiones estables en caso de fallo crítico \cite{gitlab_version_control}.
+\end{itemize}

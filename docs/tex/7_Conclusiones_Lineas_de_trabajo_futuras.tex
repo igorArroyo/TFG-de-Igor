@@ -1,0 +1,34 @@
+\capitulo{7}{Conclusiones y Líneas de trabajo futuras}
+
+El desarrollo de este Trabajo Fin de Grado ha permitido abarcar el ciclo de vida completo de una solución de \textit{software}, desde su concepción inicial hasta su implementación final. A continuación, se detallan las conclusiones extraídas, categorizadas según los resultados obtenidos y los aspectos técnicos del desarrollo, finalizando con un análisis crítico que fundamenta las vías de continuidad del proyecto.
+
+\section{Conclusiones del proyecto}
+
+\subsection{Conclusiones relacionadas con los resultados}
+\begin{itemize}
+    \item \textbf{Viabilidad y pertinencia clínica:} Se ha logrado desarrollar una aplicación móvil completamente funcional que responde a una necesidad latente en el ámbito de la salud: dotar a los pacientes diabéticos de una herramienta privada capaz de analizar información nutricional y ofrecer soporte educativo continuo.
+    \item \textbf{Cumplimiento de objetivos:} La aplicación desarrollada satisface las premisas iniciales del proyecto. Destaca especialmente la capacidad del sistema para interpretar, procesar y desglosar el impacto glucémico a partir de fotografías de etiquetas alimentarias, validando el concepto inicial de asistencia automatizada.
+    \item \textbf{Privacidad por diseño (\textit{Privacy by Design}):} Al delegar el procesamiento de la Inteligencia Artificial a un entorno de ejecución local en lugar de depender de servicios en la nube (\textit{Cloud computing}), se ha garantizado la total confidencialidad de los datos médicos del usuario, cumpliendo con los estándares éticos exigibles en aplicaciones de \textit{eHealth}.
+\end{itemize}
+
+\subsection{Conclusiones técnicas}
+\begin{itemize}
+    \item \textbf{Arquitectura de alto rendimiento:} La integración de React Native (vía Expo) para la interfaz móvil y de Go (mediante el \textit{framework} Echo) para el servidor ha demostrado constituir una pila tecnológica altamente eficiente, garantizando un flujo de comunicación rápido, asíncrono y desacoplado.
+    \item \textbf{Inteligencia Artificial Multimodal Local:} Se ha validado empíricamente la viabilidad de ejecutar Modelos de Lenguaje Grande con capacidades de visión computacional en entornos locales. Mediante la personalización del modelo base Llava (creando la variante \texttt{llava-diabetes}), se ha comprobado que la aplicación de técnicas de ingeniería de contexto (\textit{prompt engineering}) es altamente efectiva para mitigar alucinaciones algorítmicas y acotar las respuestas al marco clínico de la diabetes.
+    \item \textbf{Adopción de metodologías ágiles:} El empleo de metodologías de desarrollo ágil, materializado en el uso de tableros Kanban (GitLab) y ciclos iterativos (\textit{sprints}), ha resultado decisivo para sortear bloqueos técnicos, priorizar requerimientos funcionales y asegurar una entrega de valor constante a pesar de las limitaciones temporales.
+\end{itemize}
+
+\section{Líneas de trabajo futuras}
+
+Actualmente, la inferencia de Inteligencia Artificial en local exige un consumo intensivo de recursos de \textit{hardware}, lo que podría restringir su viabilidad en dispositivos móviles de especificaciones limitadas.
+
+Para solventar estas carencias y potenciar el alcance de la herramienta, se proponen las siguientes líneas de trabajo futuras:
+
+\begin{itemize}
+    %\item \textbf{Sistema de persistencia y perfiles clínicos:} Acoplamiento de un motor de base de datos relacional para dotar al sistema de memoria histórica. Esto posibilitaría la creación de perfiles de usuario (almacenando el tipo de diabetes, pautas de insulina y nivel de actividad física) para generar respuestas deterministas y altamente personalizadas.
+    \item \textbf{Interacción conversacional por voz (STT/TTS):} Integración de motores de conversión de voz a texto (\textit{Speech-to-Text}) y de texto a voz (\textit{Text-to-Speech}). Considerando que las consultas nutricionales suelen realizarse durante la manipulación de alimentos, la interacción mediante comandos de voz mejoraría drásticamente la ergonomía y accesibilidad de la plataforma.
+    \item \textbf{Predicción algorítmica de curvas de glucosa:} Desarrollo de modelos de \textit{machine learning} clásicos (basados en análisis de series temporales) que complementen a la IA generativa. Esto permitiría correlacionar el análisis nutricional actual con predicciones glucémicas a dos horas vista, facilitando la prevención de episodios de hiperglucemia o hipoglucemia.
+    \item \textbf{Integración de datos heterogéneos y sensorización:} Establecimiento de flujos de conexión con APIs externas (meteorología, bases de datos nutricionales globales) y posible lectura de datos provenientes de dispositivos de Monitorización Continua de Glucosa (MCG) y \textit{wearables} de actividad física, lo que dotaría al modelo \texttt{llava-diabetes} de un contexto clínico holístico en tiempo real.
+\end{itemize}
+
+%Todo proyecto debe incluir las conclusiones que se derivan de su desarrollo. Éstas pueden ser de diferente índole, dependiendo de la tipología del proyecto, pero normalmente van a estar presentes un conjunto de conclusiones relacionadas con los resultados del proyecto y un conjunto de conclusiones técnicas. Además, resulta muy útil realizar un informe crítico indicando cómo se puede mejorar el proyecto, o cómo se puede continuar trabajando en la línea del proyecto realizado. 
