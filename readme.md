@@ -14,7 +14,7 @@ Your local, AI-powered nutritional assistant for diabetes management. Fully priv
 To run this project locally, you'll need 3 terminal tabs open.
 
 **1. Spin up the AI (Ollama)**
-Make sure you have Ollama installed on your machine. Go to the `ollama/multimodal` folder and build the custom assistant:
+Make sure you have Ollama installed on your machine. Go to the `ollama` folder and build the custom assistant:
 ```bash
 ollama create llava-diabetes -f modelfile
 ollama run llava-diabetes
